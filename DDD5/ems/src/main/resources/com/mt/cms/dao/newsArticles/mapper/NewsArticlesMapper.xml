@@ -1,0 +1,571 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mt.cms.dao.newsArticles.NewsArticlesDao">
+    <!-- 条件查询 -->
+    <sql id="findNewsArticlessWhere">
+        from cms_news_articles t0
+                    LEFT JOIN cms_publisher t15 on t0.publisher_name_id =t15.eid
+                <where>
+            <if test="filters!=null">
+                                    <if test="filters.Eid!=null">
+                        <if test="filterTypes.Eid=='单值'">
+                                                        
+                                AND t0.eid = #{filters.Eid}
+
+                                                    </if>
+                        <if test="filterTypes.Eid=='模糊'">
+
+                            AND t0.eid LIKE  '%${filters.Eid}%'
+
+                        </if>
+                        <if test="filterTypes.Eid=='数组'">
+                                                                                        AND t0.eid in
+                                <foreach collection="filters.Eid" item="item" index="index" open="(" separator="," close=")">
+                                    #{item}
+                                </foreach>
+                                                    </if>
+                    </if>
+                                    <if test="filters.creatorName!=null">
+                        <if test="filterTypes.creatorName=='单值'">
+                            
+                                AND t0.creator_name LIKE  '%${filters.creatorName}%'
+
+                                                                                </if>
+                        <if test="filterTypes.creatorName=='模糊'">
+
+                            AND t0.creator_name LIKE  '%${filters.creatorName}%'
+
+                        </if>
+                        <if test="filterTypes.creatorName=='数组'">
+                                                            AND t0.creator_name in
+                                <foreach collection="filters.creatorName" item="item" index="index" open="(" separator="," close=")">
+                                    '#{item}'
+                                </foreach>
+
+                                                                                </if>
+                    </if>
+                                    <if test="filters.name!=null">
+                        <if test="filterTypes.name=='单值'">
+                            
+                                AND t0.name LIKE  '%${filters.name}%'
+
+                                                                                </if>
+                        <if test="filterTypes.name=='模糊'">
+
+                            AND t0.name LIKE  '%${filters.name}%'
+
+                        </if>
+                        <if test="filterTypes.name=='数组'">
+                                                            AND t0.name in
+                                <foreach collection="filters.name" item="item" index="index" open="(" separator="," close=")">
+                                    '#{item}'
+                                </foreach>
+
+                                                                                </if>
+                    </if>
+                                    <if test="filters.title!=null">
+                        <if test="filterTypes.title=='单值'">
+                            
+                                AND t0.title LIKE  '%${filters.title}%'
+
+                                                                                </if>
+                        <if test="filterTypes.title=='模糊'">
+
+                            AND t0.title LIKE  '%${filters.title}%'
+
+                        </if>
+                        <if test="filterTypes.title=='数组'">
+                                                            AND t0.title in
+                                <foreach collection="filters.title" item="item" index="index" open="(" separator="," close=")">
+                                    '#{item}'
+                                </foreach>
+
+                                                                                </if>
+                    </if>
+                                    <if test="filters.summary!=null">
+                        <if test="filterTypes.summary=='单值'">
+                            
+                                AND t0.summary LIKE  '%${filters.summary}%'
+
+                                                                                </if>
+                        <if test="filterTypes.summary=='模糊'">
+
+                            AND t0.summary LIKE  '%${filters.summary}%'
+
+                        </if>
+                        <if test="filterTypes.summary=='数组'">
+                                                            AND t0.summary in
+                                <foreach collection="filters.summary" item="item" index="index" open="(" separator="," close=")">
+                                    '#{item}'
+                                </foreach>
+
+                                                                                </if>
+                    </if>
+                                    <if test="filters.context!=null">
+                        <if test="filterTypes.context=='单值'">
+                            
+                                AND t0.context LIKE  '%${filters.context}%'
+
+                                                                                </if>
+                        <if test="filterTypes.context=='模糊'">
+
+                            AND t0.context LIKE  '%${filters.context}%'
+
+                        </if>
+                        <if test="filterTypes.context=='数组'">
+                                                            AND t0.context in
+                                <foreach collection="filters.context" item="item" index="index" open="(" separator="," close=")">
+                                    '#{item}'
+                                </foreach>
+
+                                                                                </if>
+                    </if>
+                                    <if test="filters.categoryId!=null">
+                        <if test="filterTypes.categoryId=='单值'">
+                                                        
+                                AND t0.category_id = #{filters.categoryId}
+
+                                                    </if>
+                        <if test="filterTypes.categoryId=='模糊'">
+
+                            AND t0.category_id LIKE  '%${filters.categoryId}%'
+
+                        </if>
+                        <if test="filterTypes.categoryId=='数组'">
+                                                                                        AND t0.category_id in
+                                <foreach collection="filters.categoryId" item="item" index="index" open="(" separator="," close=")">
+                                    #{item}
+                                </foreach>
+                                                    </if>
+                    </if>
+                                    <if test="filters.thumbnail!=null">
+                        <if test="filterTypes.thumbnail=='单值'">
+                            
+                                AND t0.thumbnail LIKE  '%${filters.thumbnail}%'
+
+                                                                                </if>
+                        <if test="filterTypes.thumbnail=='模糊'">
+
+                            AND t0.thumbnail LIKE  '%${filters.thumbnail}%'
+
+                        </if>
+                        <if test="filterTypes.thumbnail=='数组'">
+                                                            AND t0.thumbnail in
+                                <foreach collection="filters.thumbnail" item="item" index="index" open="(" separator="," close=")">
+                                    '#{item}'
+                                </foreach>
+
+                                                                                </if>
+                    </if>
+                                    <if test="filters.commentNum!=null">
+                        <if test="filterTypes.commentNum=='单值'">
+                                                        
+                                AND t0.comment_num = #{filters.commentNum}
+
+                                                    </if>
+                        <if test="filterTypes.commentNum=='模糊'">
+
+                            AND t0.comment_num LIKE  '%${filters.commentNum}%'
+
+                        </if>
+                        <if test="filterTypes.commentNum=='数组'">
+                                                                                        AND t0.comment_num in
+                                <foreach collection="filters.commentNum" item="item" index="index" open="(" separator="," close=")">
+                                    #{item}
+                                </foreach>
+                                                    </if>
+                    </if>
+                                    <if test="filters.viewNum!=null">
+                        <if test="filterTypes.viewNum=='单值'">
+                                                        
+                                AND t0.view_num = #{filters.viewNum}
+
+                                                    </if>
+                        <if test="filterTypes.viewNum=='模糊'">
+
+                            AND t0.view_num LIKE  '%${filters.viewNum}%'
+
+                        </if>
+                        <if test="filterTypes.viewNum=='数组'">
+                                                                                        AND t0.view_num in
+                                <foreach collection="filters.viewNum" item="item" index="index" open="(" separator="," close=")">
+                                    #{item}
+                                </foreach>
+                                                    </if>
+                    </if>
+                                    <if test="filters.thumbNum!=null">
+                        <if test="filterTypes.thumbNum=='单值'">
+                                                        
+                                AND t0.thumb_num = #{filters.thumbNum}
+
+                                                    </if>
+                        <if test="filterTypes.thumbNum=='模糊'">
+
+                            AND t0.thumb_num LIKE  '%${filters.thumbNum}%'
+
+                        </if>
+                        <if test="filterTypes.thumbNum=='数组'">
+                                                                                        AND t0.thumb_num in
+                                <foreach collection="filters.thumbNum" item="item" index="index" open="(" separator="," close=")">
+                                    #{item}
+                                </foreach>
+                                                    </if>
+                    </if>
+                                    <if test="filters.collectNum!=null">
+                        <if test="filterTypes.collectNum=='单值'">
+                                                        
+                                AND t0.collect_num = #{filters.collectNum}
+
+                                                    </if>
+                        <if test="filterTypes.collectNum=='模糊'">
+
+                            AND t0.collect_num LIKE  '%${filters.collectNum}%'
+
+                        </if>
+                        <if test="filterTypes.collectNum=='数组'">
+                                                                                        AND t0.collect_num in
+                                <foreach collection="filters.collectNum" item="item" index="index" open="(" separator="," close=")">
+                                    #{item}
+                                </foreach>
+                                                    </if>
+                    </if>
+                                    <if test="filters.newsType!=null">
+                        <if test="filterTypes.newsType=='单值'">
+                                                        
+                                AND t0.news_type = #{filters.newsType}
+
+                                                    </if>
+                        <if test="filterTypes.newsType=='模糊'">
+
+                            AND t0.news_type LIKE  '%${filters.newsType}%'
+
+                        </if>
+                        <if test="filterTypes.newsType=='数组'">
+                                                                                        AND t0.news_type in
+                                <foreach collection="filters.newsType" item="item" index="index" open="(" separator="," close=")">
+                                    #{item}
+                                </foreach>
+                                                    </if>
+                    </if>
+                                    <if test="filters.status!=null">
+                        <if test="filterTypes.status=='单值'">
+                            
+                                AND t0.status LIKE  '%${filters.status}%'
+
+                                                                                </if>
+                        <if test="filterTypes.status=='模糊'">
+
+                            AND t0.status LIKE  '%${filters.status}%'
+
+                        </if>
+                        <if test="filterTypes.status=='数组'">
+                                                            AND t0.status in
+                                <foreach collection="filters.status" item="item" index="index" open="(" separator="," close=")">
+                                    '#{item}'
+                                </foreach>
+
+                                                                                </if>
+                    </if>
+                                    <if test="filters.isTop!=null">
+                        <if test="filterTypes.isTop=='单值'">
+                                                        
+                                AND t0.is_top = #{filters.isTop}
+
+                                                    </if>
+                        <if test="filterTypes.isTop=='模糊'">
+
+                            AND t0.is_top LIKE  '%${filters.isTop}%'
+
+                        </if>
+                        <if test="filterTypes.isTop=='数组'">
+                                                                                        AND t0.is_top in
+                                <foreach collection="filters.isTop" item="item" index="index" open="(" separator="," close=")">
+                                    #{item}
+                                </foreach>
+                                                    </if>
+                    </if>
+                                    <if test="filters.publisherNameId!=null">
+                        <if test="filterTypes.publisherNameId=='单值'">
+                                                        
+                                AND t0.publisher_name_id = #{filters.publisherNameId}
+
+                                                    </if>
+                        <if test="filterTypes.publisherNameId=='模糊'">
+
+                            AND t0.publisher_name_id LIKE  '%${filters.publisherNameId}%'
+
+                        </if>
+                        <if test="filterTypes.publisherNameId=='数组'">
+                                                                                        AND t0.publisher_name_id in
+                                <foreach collection="filters.publisherNameId" item="item" index="index" open="(" separator="," close=")">
+                                    #{item}
+                                </foreach>
+                                                    </if>
+                    </if>
+                                    <if test="filters.creatorId!=null">
+                        <if test="filterTypes.creatorId=='单值'">
+                                                        
+                                AND t0.creator_id = #{filters.creatorId}
+
+                                                    </if>
+                        <if test="filterTypes.creatorId=='模糊'">
+
+                            AND t0.creator_id LIKE  '%${filters.creatorId}%'
+
+                        </if>
+                        <if test="filterTypes.creatorId=='数组'">
+                                                                                        AND t0.creator_id in
+                                <foreach collection="filters.creatorId" item="item" index="index" open="(" separator="," close=")">
+                                    #{item}
+                                </foreach>
+                                                    </if>
+                    </if>
+                                    <if test="filters.remark!=null">
+                        <if test="filterTypes.remark=='单值'">
+                            
+                                AND t0.remark LIKE  '%${filters.remark}%'
+
+                                                                                </if>
+                        <if test="filterTypes.remark=='模糊'">
+
+                            AND t0.remark LIKE  '%${filters.remark}%'
+
+                        </if>
+                        <if test="filterTypes.remark=='数组'">
+                                                            AND t0.remark in
+                                <foreach collection="filters.remark" item="item" index="index" open="(" separator="," close=")">
+                                    '#{item}'
+                                </foreach>
+
+                                                                                </if>
+                    </if>
+                                    <if test="filters.createDatetime!=null">
+                        <if test="filterTypes.createDatetime=='单值'">
+                                                                                </if>
+                        <if test="filterTypes.createDatetime=='模糊'">
+
+                            AND t0.create_datetime LIKE  '%${filters.createDatetime}%'
+
+                        </if>
+                        <if test="filterTypes.createDatetime=='数组'">
+                                                                                </if>
+                    </if>
+                            </if>
+        </where>
+    </sql>
+
+
+    <!-- 根据分页参数查询数据集合 -->
+    <select id="findNewsArticless" resultType="com.mt.cms.entity.newsArticles.NewsArticles" parameterType="com.mt.common.core.web.base.PageDTO">
+        select
+            t0.eid  ,
+            t0.creator_name  ,
+            t0.name  ,
+            t0.title  ,
+            t0.summary  ,
+            t0.context  ,
+            t0.category_id  ,
+            t0.thumbnail  ,
+            t0.comment_num  ,
+            t0.view_num  ,
+            t0.thumb_num  ,
+            t0.collect_num  ,
+            t0.news_type  ,
+            t0.status  ,
+            t0.is_top  ,
+            t0.publisher_name_id  ,
+            t0.creator_id  ,
+            t0.remark  ,
+            t0.create_datetime  
+                ,t15.name as publisher_name_name
+
+    
+        <include refid="findNewsArticlessWhere"></include>
+
+        <if test="orderBys!=null">
+            <foreach collection="orderBys" item="item" index="index" open="order by" separator="," close="">
+                ${item}
+            </foreach>
+        </if>
+        limit #{startIndex},#{pageSize}
+    </select>
+
+    <!-- 根据分页参数查询数据集合总条数 -->
+    <select id="findNewsArticlesTotalCount" resultType="java.lang.Long" parameterType="com.mt.common.core.web.base.PageDTO">
+        select count(t0.eid) as totalCount
+        <include refid="findNewsArticlessWhere"></include>
+    </select>
+
+    <!-- 根据查询所有数据集合 -->
+    <select id="findAllNewsArticless" resultType="com.mt.cms.entity.newsArticles.NewsArticles" >
+        select
+                    t0.eid  ,
+                    t0.creator_name  ,
+                    t0.name  ,
+                    t0.title  ,
+                    t0.summary  ,
+                    t0.context  ,
+                    t0.category_id  ,
+                    t0.thumbnail  ,
+                    t0.comment_num  ,
+                    t0.view_num  ,
+                    t0.thumb_num  ,
+                    t0.collect_num  ,
+                    t0.news_type  ,
+                    t0.status  ,
+                    t0.is_top  ,
+                    t0.publisher_name_id  ,
+                    t0.creator_id  ,
+                    t0.remark  ,
+                    t0.create_datetime  
+                            ,t15.name as publisher_name_name
+
+                from cms_news_articles t0
+                    LEFT JOIN cms_publisher t15 on t0.publisher_name_id =t15.eid
+                ORDER BY t0.create_datetime
+    </select>
+
+    <!-- 根据名称查询数据集合,只提取ID 和 Name -->
+    <select id="findNewsArticlessWithIdNameByName" resultType="com.mt.cms.entity.newsArticles.NewsArticles" parameterType="java.lang.String">
+        select
+            t0.eid,t0.name
+        from cms_news_articles t0
+        where t0.name like  '%${newsArticlesName}%'
+        ORDER BY t0.name
+    </select>
+
+
+    <!-- 查询所有数据集合,只提取ID 和 Name -->
+    <select id="findAllNewsArticlessWithIdName" resultType="com.mt.cms.entity.newsArticles.NewsArticles" >
+        select
+        t0.eid,t0.name
+        from cms_news_articles t0
+        ORDER BY t0.name
+    </select>
+
+    <!-- 查询指定的实体,只提取ID 和 Name -->
+    <select id="findNewsArticlessWithIdNameById" resultType="com.mt.cms.entity.newsArticles.NewsArticles" parameterType="java.lang.Long">
+        select
+        t0.eid,t0.name
+        from cms_news_articles t0
+        where eid = #{newsArticlesId}
+    </select>
+
+    <!--  根据Id查询 -->
+    <select id="findNewsArticles" resultType="com.mt.cms.entity.newsArticles.NewsArticles" parameterType="java.lang.Long">
+        select * from cms_news_articles where eid = #{newsArticlesId}
+    </select>
+
+    <!-- 根据ID查询指定的实体(包含外键) -->
+    <select id="findNewsArticlesWithForeignName" resultType="com.mt.cms.entity.newsArticles.NewsArticles" parameterType="java.lang.Long">
+        select
+                    t0.eid  ,
+                    t0.creator_name  ,
+                    t0.name  ,
+                    t0.title  ,
+                    t0.summary  ,
+                    t0.context  ,
+                    t0.category_id  ,
+                    t0.thumbnail  ,
+                    t0.comment_num  ,
+                    t0.view_num  ,
+                    t0.thumb_num  ,
+                    t0.collect_num  ,
+                    t0.news_type  ,
+                    t0.status  ,
+                    t0.is_top  ,
+                    t0.publisher_name_id  ,
+                    t0.creator_id  ,
+                    t0.remark  ,
+                    t0.create_datetime  
+                            ,t15.name as publisher_name_name
+
+                from cms_news_articles t0
+                    LEFT JOIN cms_publisher t15 on t0.publisher_name_id =t15.eid
+                where t0.eid = #{newsArticlesId}
+    </select>
+
+
+    <!--  保存 -->
+    <insert id="saveNewsArticles" parameterType="com.mt.cms.entity.newsArticles.NewsArticles" useGeneratedKeys="true">
+        <selectKey keyProperty="eid" order="AFTER" resultType="java.lang.Long" >
+            select LAST_INSERT_ID()
+        </selectKey>
+        insert into cms_news_articles
+        (
+                                                        creator_name ,
+                                                name ,
+                                                title ,
+                                                summary ,
+                                                context ,
+                                                category_id ,
+                                                thumbnail ,
+                                                comment_num ,
+                                                view_num ,
+                                                thumb_num ,
+                                                collect_num ,
+                                                news_type ,
+                                                status ,
+                                                is_top ,
+                                                publisher_name_id ,
+                                                creator_id ,
+                                                remark ,
+                                                create_datetime 
+                            )
+        values
+        (
+                                                        #{creatorName} ,
+                                                #{name} ,
+                                                #{title} ,
+                                                #{summary} ,
+                                                #{context} ,
+                                                #{categoryId} ,
+                                                #{thumbnail} ,
+                                                #{commentNum} ,
+                                                #{viewNum} ,
+                                                #{thumbNum} ,
+                                                #{collectNum} ,
+                                                #{newsType} ,
+                                                #{status} ,
+                                                #{isTop} ,
+                                                #{publisherNameId} ,
+                                                #{creatorId} ,
+                                                #{remark} ,
+                                                #{createDatetime} 
+                            )
+    </insert>
+
+    <!--  编辑 -->
+    <update id="updateNewsArticles" parameterType="com.mt.cms.entity.newsArticles.NewsArticles" >
+        update cms_news_articles set
+                                                        creator_name = #{creatorName} ,
+                                                name = #{name} ,
+                                                title = #{title} ,
+                                                summary = #{summary} ,
+                                                context = #{context} ,
+                                                category_id = #{categoryId} ,
+                                                thumbnail = #{thumbnail} ,
+                                                comment_num = #{commentNum} ,
+                                                view_num = #{viewNum} ,
+                                                thumb_num = #{thumbNum} ,
+                                                collect_num = #{collectNum} ,
+                                                news_type = #{newsType} ,
+                                                status = #{status} ,
+                                                is_top = #{isTop} ,
+                                                publisher_name_id = #{publisherNameId} ,
+                                                creator_id = #{creatorId} ,
+                                                remark = #{remark} ,
+                                                create_datetime = #{createDatetime} 
+                            where eid=#{eid}
+    </update>
+
+
+    <!--  根据Id删除 -->
+    <delete id="deleteNewsArticles"  parameterType="java.lang.Long">
+        delete from cms_news_articles where eid = #{newsArticlesId}
+    </delete>
+
+
+</mapper>

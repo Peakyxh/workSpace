@@ -1,0 +1,102 @@
+{
+  "name": "DDD5",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint",
+    "build:preview": "vue-cli-service build --mode preview",
+    "build:report": "vue-cli-service build --report"
+
+  },
+  "main": "main.js",
+  "dependencies": {
+    "@amap/amap-jsapi-loader": "~0.0.7",
+    "@ant-design/icons-vue": "^6.0.1",
+    "@antv/g2": "^4.1.19",
+
+    "@tinymce/tinymce-vue": "~4.0.0",
+    "ant-design-vue": "~2.2.2",
+    "axios": "~0.21.1",
+    "core-js": "~3.8.3",
+    "countup.js": "~2.0.7",
+    "cropperjs": "~1.5.11",
+    "echarts": "^4.9.0",
+    "echarts-wordcloud": "~1.1.3",
+    "ele-admin-pro": "file:ele-admin-pro",
+
+    "ffi-napi": "^4.0.3",
+    "file-saver": "^2.0.5",
+    "is-mobile": "^3.0.0",
+    "jquery": "^3.6.0",
+    "jsonfile": "^6.1.0",
+    "lodash": "^4.17.21",
+    "mathjs": "^9.5.1",
+    "modules": "^0.4.0",
+    "nprogress": "~0.2.0",
+    "pdf-to-printer": "^3.1.0",
+    "pinyin-match": "^1.2.2",
+    "qs": "^6.10.1",
+    "ref-napi": "^3.0.3",
+    "tinymce": "~5.7.0",
+    "umi-request": "^1.3.9",
+    "vue": "~3.1.5",
+    "vue-axios": "~3.2.4",
+    "vue-i18n": "~9.1.6",
+    "vue-router": "~4.0.0",
+    "vuedraggable": "~4.0.1",
+    "vuex": "~4.0.0",
+    "vxe-table": "^4.0.22",
+    "xe-ajax": "^4.0.5",
+    "xe-utils": "^3.3.0",
+    "xgplayer-vue": "~1.1.5",
+    "xlsx": "^0.17.0"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~4.5.13",
+    "@vue/cli-plugin-eslint": "~4.5.13",
+    "@vue/cli-plugin-router": "~4.5.13",
+    "@vue/cli-plugin-vuex": "~4.5.13",
+    "@vue/cli-service": "~4.5.13",
+    "@vue/compiler-sfc": "~3.1.5",
+    "babel-eslint": "~10.1.0",
+    "compression-webpack-plugin": "~6.1.1",
+
+
+    "eslint": "~6.8.0",
+    "eslint-plugin-vue": "~7.9.0",
+    "less": "~4.1.1",
+    "less-loader": "~7.3.0",
+    "postcss": "~8.3.5"
+
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ],
+  
+  "rules": {
+    "generator-star-spacing": "off",
+    "no-tabs":"off",
+    "no-unused-vars":"off",
+    "no-console":"off",
+    "no-irregular-whitespace":"off",
+    "no-debugger": "off"
+  },
+
+  "__npminstall_done": false,
+  "build": {
+    "win": {
+      "target": [
+        {
+          "target": "nsis"
+        }
+      ]
+    },
+    "extraFiles": [
+      "dll"
+    ]
+  }
+}
